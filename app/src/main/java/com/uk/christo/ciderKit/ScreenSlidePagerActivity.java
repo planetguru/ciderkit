@@ -25,12 +25,6 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 		pager.setAdapter(pageAdapter);
 	}
 
-    /*
-	public void onRadioButtonClicked(View v){
-		Toast.makeText(getApplicationContext(), "msg msg", Toast.LENGTH_SHORT).show();
-	}
-	*/
-
 	class MyPageAdapter extends FragmentPagerAdapter {
 		private List<Fragment> fragments;
 
