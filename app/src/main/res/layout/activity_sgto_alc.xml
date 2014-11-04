@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
+	android:background="#cC58774b" android:orientation="vertical"
+	android:layout_alignParentTop="true" 
+	android:layout_width="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin"
+	android:paddingBottom="@dimen/activity_vertical_margin"
+	android:layout_margin="0dp" android:layout_height="fill_parent">
+
+
+	<TextView android:id="@+id/editText1" android:layout_width="fill_parent"
+		android:textColor="#FFFFFF" android:paddingLeft="5dp"
+		android:paddingRight="5dp" android:paddingTop="12dp"
+		android:paddingBottom="12dp" android:layout_height="wrap_content"
+		android:layout_alignParentTop="true" android:background="#cC58774b"
+		android:layout_alignRight="@+id/row1Container" android:ems="10"
+		android:text="@string/alc_help_text" />
+
+
+	<LinearLayout android:id="@+id/row1Container"
+		android:paddingLeft="5dp" android:paddingRight="5dp"
+		android:background="#cC58774b" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_marginTop="15dp"
+		android:layout_below="@+id/editText1">
+
+		<TextView android:id="@+id/OGLabel" android:labelFor="@+id/OGValue"
+			android:textColor="#FFFFFF" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/OGLabel" />
+		<EditText android:id="@+id/OGValue" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_marginLeft="20dp"
+			android:ems="10" android:inputType="text" />
+	</LinearLayout>
+
+	<LinearLayout android:id="@+id/row2Container"
+		android:paddingLeft="5dp" android:paddingRight="5dp"
+		android:background="#cC58774b" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_marginTop="15dp"
+		android:layout_below="@+id/row1Container">
+
+		<TextView android:id="@+id/TGLabel" android:labelFor="@+id/TGValue"
+			android:textColor="#FFFFFF" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/TGLabel" />
+		<EditText android:id="@+id/TGValue" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_marginLeft="20dp"
+			android:ems="10" android:inputType="text" />
+	</LinearLayout>
+
+
+	<LinearLayout android:id="@+id/row3Container"
+		android:paddingLeft="5dp" android:paddingRight="5dp"
+		android:background="#cC58774b" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_marginTop="15dp"
+		android:layout_below="@+id/row2Container">
+
+		<TextView android:id="@+id/AlcLabel" android:labelFor="@+id/AlcValue"
+			android:textColor="#FFFFFF" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/AlcLabel" />
+		<EditText android:id="@+id/AlcValue" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:layout_marginLeft="20dp"
+			android:hint="@string/AlcPercent" android:clickable="false"
+			android:cursorVisible="false" android:focusable="false"
+			android:focusableInTouchMode="false" />
+	</LinearLayout>
+</RelativeLayout>
