@@ -1,20 +1,25 @@
-<resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CiderKit" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/seed</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_container_light</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container_light</item>
+        
+        <item name="colorSecondary">@color/secondary_light</item>
+        <item name="colorOnSecondary">@color/on_secondary_light</item>
+        <item name="colorSecondaryContainer">@color/secondary_container_light</item>
+        <item name="colorOnSecondaryContainer">@color/on_secondary_container_light</item>
+        
+        <item name="android:windowBackground">@color/surface_light</item>
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
+    <style name="Theme.CiderKit" parent="Base.Theme.CiderKit" />
+    
+    <!-- Legacy theme for compatibility -->
+    <style name="AppTheme" parent="Theme.CiderKit" />
 
 </resources>

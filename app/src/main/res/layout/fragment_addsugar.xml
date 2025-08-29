@@ -1,91 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
-    android:background="#cC58774b" android:orientation="vertical"
-    android:layout_alignParentTop="true"
-    android:layout_width="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:layout_margin="0dp" android:layout_height="fill_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-    <TextView android:id="@+id/helpText" android:layout_height="wrap_content"
-        android:layout_width="fill_parent" android:layout_alignParentTop="true"
-        android:background="#cC58774b" android:layout_alignRight="@+id/row1Container"
-        android:textColor="#FFFFFF" android:paddingLeft="5dp"
-        android:paddingRight="5dp" android:paddingTop="12dp"
-        android:paddingBottom="12dp" android:ems="10" android:text="@string/sugar_help_text" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/helpCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout android:id="@+id/row1Container"
-        android:paddingLeft="5dp" android:paddingRight="5dp"
-        android:background="#9C58774b" android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:layout_marginTop="10dp"
-        android:layout_below="@+id/helpText">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/sugar_help_text"
+                android:textAppearance="?attr/textAppearanceBodyMedium" />
 
-        <TextView android:id="@+id/startingSGLabel"
-            android:labelFor="@+id/OGValue" android:textColor="#FFFFFF"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/OGLabel" />
-        <EditText android:id="@+id/startingSGValue"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" android:ems="10" android:inputType="text" />
-    </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-    <LinearLayout android:id="@+id/row2Container"
-        android:paddingLeft="5dp" android:paddingRight="5dp"
-        android:background="#cC58774b" android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:layout_marginTop="10dp"
-        android:layout_below="@+id/row1Container">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/inputCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/helpCard">
 
-        <TextView android:id="@+id/targetSGLabel" android:labelFor="@+id/OGValue"
-            android:textColor="#FFFFFF" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="@string/targetSGLabel" />
-        <EditText android:id="@+id/targetSGValue"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" android:ems="10" android:inputType="text" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-    <LinearLayout android:id="@+id/row3Container"
-        android:paddingLeft="5dp" android:paddingRight="5dp"
-        android:background="#cC58774b" android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:layout_marginTop="10dp"
-        android:layout_below="@+id/row2Container">
-        <TextView android:id="@+id/volumeLabel" android:labelFor="@+id/volumeValue"
-            android:textColor="#FFFFFF" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="@string/volumeLabelMetric" />
-        <EditText android:id="@+id/volumeValue"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" android:ems="10" android:inputType="text" />
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/startingSGLabel"
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:hintTextColor="?attr/colorPrimary">
 
-    <LinearLayout android:id="@+id/row4Container"
-        android:paddingLeft="5dp" android:paddingRight="5dp"
-        android:background="#cC58774b" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:layout_marginTop="10dp"
-        android:layout_below="@+id/row3Container">
+                    <EditText
+                        android:id="@+id/startingSGValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789."
+                        android:background="@android:color/transparent"
+                        android:imeOptions="actionNext"
+                        android:privateImeOptions="nm"
+                        android:importantForAutofill="no" />
 
-        <TextView android:id="@+id/addSugarLabel" android:labelFor="@+id/addSugarValue"
-            android:textColor="#FFFFFF" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="@string/addSugarLabelMetric" />
-        <EditText android:id="@+id/addSugarValue"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" android:ems="10" android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-    <RadioGroup android:id="@+id/radioGroup1"
-        android:background="#cC58774b" android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:layout_alignLeft="@+id/row4Container"
-        android:layout_below="@+id/row4Container" android:layout_marginTop="15dp"
-        android:orientation="vertical">
-        <RadioButton android:id="@+id/radioMetric"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/targetSGLabel"
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:hintTextColor="?attr/colorPrimary">
 
-            android:text="@string/metricRadio" />
-        <RadioButton android:id="@+id/radioImperial"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/targetSGValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:digits="0123456789."
+                        android:imeOptions="flagNoExtractUi" />
 
-            android:text="@string/imperialRadio" />
-    </RadioGroup>
-</RelativeLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:hintTextColor="?attr/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/volumeValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:digits="0123456789."
+                        android:imeOptions="flagNoExtractUi" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/volumeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/volumeLabelMetric"
+                    android:textAppearance="?attr/textAppearanceBodySmall" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/unitsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputCard">
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioMetric"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/metricRadio" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioImperial"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/imperialRadio" />
+
+            </RadioGroup>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/resultCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/unitsCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/addSugarLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/addSugarLabelMetric"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    android:textColor="?attr/colorOnPrimaryContainer" />
+
+                <TextView
+                    android:id="@+id/addSugarValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                    android:textColor="?attr/colorOnPrimaryContainer"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -28,5 +28,9 @@
     <string name="sugar_help_text">To calculate sugar required to achieve your desired Specific Gravity (pre-fermentation), Measure current SG, then provide target SG and volume of juice.</string>
     <string name="title_activity_screen_slide_pager">ScreenSlidePagerActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <!-- Tab titles -->
+    <string name="tab_add_sugar">Sugar Calculator</string>
+    <string name="tab_sg_to_alcohol">Alcohol Calculator</string>
 
 </resources>

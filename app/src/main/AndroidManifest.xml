@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uk.christo.ciderKit"
-    android:versionCode="7"
-    android:versionName="1.4" >
-
-    <uses-sdk
-        android:minSdkVersion="10"
-        android:targetSdkVersion="19" />
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.CiderKit"
+        android:supportsRtl="true"
+        tools:targetApi="31">
+        
         <activity
-            android:name="com.uk.christo.ciderKit.ScreenSlidePagerActivity"
+            android:name=".ui.main.MainActivity"
+            android:exported="true"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:theme="@style/Theme.CiderKit">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.uk.christo.ciderKit.SugarActivity"
-            android:label="@string/title_activity_sugar"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.uk.christo.ciderKit.SGToAlc"
-            android:label="@string/title_activity_sgto_alc" >
         </activity>
 
     </application>
