@@ -12,11 +12,13 @@ import com.uk.christo.ciderKit.R
 import com.uk.christo.ciderKit.databinding.FragmentAddsugarBinding
 import com.uk.christo.ciderKit.domain.model.BrewingCalculations
 import com.uk.christo.ciderKit.domain.model.SugarCalculationInput
+import com.uk.christo.ciderKit.data.PreferencesManager
 
 class AddSugarFragment : Fragment() {
     
     private var _binding: FragmentAddsugarBinding? = null
     private val binding get() = _binding!!
+    private lateinit var preferencesManager: PreferencesManager
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,9 +32,12 @@ class AddSugarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        preferencesManager = PreferencesManager(requireContext())
+        
         setupInitialState()
         setupTextWatchers()
         setupRadioGroup()
+        loadSavedValues()
     }
     
     override fun onDestroyView() {
@@ -85,10 +90,8 @@ class AddSugarFragment : Fragment() {
     private fun updateLabels() {
         binding.apply {
             if (radioImperial.isChecked) {
-                volumeLabel.setText(R.string.volumeLabelImperial)
                 addSugarLabel.setText(R.string.addSugarLabelImperial)
             } else {
-                volumeLabel.setText(R.string.volumeLabelMetric)
                 addSugarLabel.setText(R.string.addSugarLabelMetric)
             }
         }
@@ -112,6 +115,8 @@ class AddSugarFragment : Fragment() {
         val targetSGText = binding.targetSGValue.text.toString()
         val volumeText = binding.volumeValue.text.toString()
         
+        saveCurrentValues()
+        
         if (startingSGText.isNotBlank() && targetSGText.isNotBlank() && volumeText.isNotBlank()) {
             try {
                 val startingSG = startingSGText.toFloat()
@@ -128,6 +133,30 @@ class AddSugarFragment : Fragment() {
             }
         } else {
             binding.addSugarValue.setText("")
+        }
+    }
+    
+    private fun saveCurrentValues() {
+        val startingSG = binding.startingSGValue.text.toString()
+        val targetSG = binding.targetSGValue.text.toString()
+        val volume = binding.volumeValue.text.toString()
+        val isImperial = binding.radioImperial.isChecked
+        
+        preferencesManager.saveAddSugarData(startingSG, targetSG, volume, isImperial)
+    }
+    
+    private fun loadSavedValues() {
+        binding.apply {
+            startingSGValue.setText(preferencesManager.getStartingSG())
+            targetSGValue.setText(preferencesManager.getTargetSG())
+            volumeValue.setText(preferencesManager.getVolume())
+            
+            val isImperial = preferencesManager.isImperialSelected()
+            radioImperial.isChecked = isImperial
+            radioMetric.isChecked = !isImperial
+            
+            updateLabels()
+            calculateSugar()
         }
     }
 }

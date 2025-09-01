@@ -23,6 +23,12 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    - name: Create gradle.properties for CI
+      run: |
+        echo "android.useAndroidX=true" >> gradle.properties
+        echo "android.nonTransitiveRClass=true" >> gradle.properties
+        echo "kotlin.code.style=official" >> gradle.properties
+
     - name: Run tests
       run: ./gradlew test
 
@@ -45,6 +51,12 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
+    - name: Create gradle.properties for CI
+      run: |
+        echo "android.useAndroidX=true" >> gradle.properties
+        echo "android.nonTransitiveRClass=true" >> gradle.properties
+        echo "kotlin.code.style=official" >> gradle.properties
 
     - name: Build APK
       run: ./gradlew assembleDebug

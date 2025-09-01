@@ -12,11 +12,13 @@ import com.uk.christo.ciderKit.R
 import com.uk.christo.ciderKit.databinding.ActivitySgtoAlcBinding
 import com.uk.christo.ciderKit.domain.model.AlcoholCalculationInput
 import com.uk.christo.ciderKit.domain.model.BrewingCalculations
+import com.uk.christo.ciderKit.data.PreferencesManager
 
 class SGToAlcFragment : Fragment() {
     
     private var _binding: ActivitySgtoAlcBinding? = null
     private val binding get() = _binding!!
+    private lateinit var preferencesManager: PreferencesManager
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +32,11 @@ class SGToAlcFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        preferencesManager = PreferencesManager(requireContext())
+        
         setupInitialState()
         setupTextWatchers()
+        loadSavedValues()
     }
     
     override fun onDestroyView() {
@@ -69,6 +74,8 @@ class SGToAlcFragment : Fragment() {
         val ogText = binding.OGValue.text.toString()
         val tgText = binding.TGValue.text.toString()
         
+        saveCurrentValues()
+        
         if (ogText.isNotBlank() && tgText.isNotBlank()) {
             try {
                 val originalGravity = ogText.toFloat()
@@ -83,6 +90,22 @@ class SGToAlcFragment : Fragment() {
             }
         } else {
             binding.AlcValue.text = ""
+        }
+    }
+    
+    private fun saveCurrentValues() {
+        val originalGravity = binding.OGValue.text.toString()
+        val terminalGravity = binding.TGValue.text.toString()
+        
+        preferencesManager.saveSGToAlcData(originalGravity, terminalGravity)
+    }
+    
+    private fun loadSavedValues() {
+        binding.apply {
+            OGValue.setText(preferencesManager.getOriginalGravity())
+            TGValue.setText(preferencesManager.getTerminalGravity())
+            
+            calculateAlcohol()
         }
     }
 }
